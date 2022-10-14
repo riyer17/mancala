@@ -21,23 +21,22 @@ class Game:
         # Runs the move and the GameBoard makes changes
         # Print the gameboard at the end of each move
 
-
     player1Type = input("Player 1: Human or computer?")
     if "human" in player1Type.lower():
-        player1 = Human();
+        player1 = Human("player1")
     # else:
         # player1 = Computer();
     player2Type = input("Player 2: Human or computer?")
     if "human" in player2Type.lower():
-        player2 = Human();
+        player2 = Human("player2")
     # else:
         # player2 = Computer();
 
     print("This is how the house numbering works: ")
     print("12  11  10  9   8   7\n1   2   3   4   5   6")
     counter = 0
-    while (counter < 100):
-        if (counter%2 == 0):
+    while counter < 100:
+        if counter%2 == 0:
             runMove(player1)
         else:
             runMove(player2)
