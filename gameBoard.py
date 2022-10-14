@@ -30,8 +30,21 @@ class GameBoard:
             tempPrint = tempPrint + str(k) + "\t\t"
         print(tempPrint)
 
-    def get_score(self, player):
-        if player == self.player1:
-            return self.score1
-        else:
-            return self.score2
+    def move(self, pickUpHouse, player):
+        # this is function that changes the gameboard according to the player's move
+        numOfSeeds = self.board[pickUpHouse]
+        self.board[pickUpHouse] = 0
+        for i in range(numOfSeeds, 0, -1):
+            self.board[i] += 1
+        counter = 0
+        while (self.board[pickUpHouse - numOfSeeds + counter] == 2) or (self.board[pickUpHouse - numOfSeeds - counter] == 3):
+            if player == self.player1:
+                self.score1 += self.board[pickUpHouse - numOfSeeds + counter]
+            else:
+                self.score2 += self.board[pickUpHouse - numOfSeeds + counter]
+            self.board[pickUpHouse - numOfSeeds + counter] = 0
+            counter += 1
+
+        # if (self.board[pickUpHouse-numOfSeeds] == 2) or (self.board[pickUpHouse-numOfSeeds] == 3):
+        # player.score += self.board[pickUpHouse-numOfSeeds]
+        self.print_board()

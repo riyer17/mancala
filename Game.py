@@ -20,20 +20,18 @@ class Game:
         player.move(12-playerInput) # changes the index to match the direction of the GameBoard's list
         # Runs the move and the GameBoard makes changes
         # Print the gameboard at the end of each move
-        self.gameBoard.printBoard()
 
 
-    # def runGame(self):
     player1Type = input("Player 1: Human or computer?")
-    if (player1Type.containsIgnoreCase("human")):
+    if "human" in player1Type.lower():
         player1 = Human();
-    else:
-        player1 = Computer();
+    # else:
+        # player1 = Computer();
     player2Type = input("Player 2: Human or computer?")
-    if (player2Type.containsIgnoreCase("human")):
+    if "human" in player2Type.lower():
         player2 = Human();
-    else:
-        player2 = Computer();
+    # else:
+        # player2 = Computer();
 
     print("This is how the house numbering works: ")
     print("12  11  10  9   8   7\n1   2   3   4   5   6")
