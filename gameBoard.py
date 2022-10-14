@@ -48,3 +48,9 @@ class GameBoard:
         # if (self.board[pickUpHouse-numOfSeeds] == 2) or (self.board[pickUpHouse-numOfSeeds] == 3):
         # player.score += self.board[pickUpHouse-numOfSeeds]
         self.print_board()
+
+    def get_score(self, player):
+        if player == self.player1 :
+            return self.score1
+        else:
+            return self.score2
