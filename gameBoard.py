@@ -20,7 +20,7 @@ class GameBoard:
         for j in range(0, 6):
             tempPrint = tempPrint + str(12 - j) + "\t\t"
         print(tempPrint)
-        print("\n",tabs, "\t\t\tp1 score = ", self.score1, tabs, "p2 score = ", self.score2)
+        print("\n", tabs, "\t\t\tp1 score = ", self.score1, tabs, "p2 score = ", self.score2)
         tempPrint = "\nNumber of Seeds for p2: \t"
         for i in reversed(range(-6, 0)):
             tempPrint = tempPrint + str(self.board[i]) + "\t\t"
@@ -29,3 +29,9 @@ class GameBoard:
         for k in range(1, 7):
             tempPrint = tempPrint + str(k) + "\t\t"
         print(tempPrint)
+
+    def get_score(self, player):
+        if player == self.player1:
+            return self.score1
+        else:
+            return self.score2
