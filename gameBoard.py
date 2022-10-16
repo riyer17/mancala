@@ -35,7 +35,7 @@ class GameBoard:
         numOfSeeds = self.board[pickUpHouse]
         self.board[pickUpHouse] = 0
         for i in range(numOfSeeds, 0, -1):
-            self.board[i] += 1
+            self.board[pickUpHouse-i] += 1
         counter = 0
         while (self.board[pickUpHouse - numOfSeeds + counter] == 2) or (self.board[pickUpHouse - numOfSeeds - counter] == 3):
             if player == self.player1:
