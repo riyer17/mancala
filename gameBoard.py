@@ -69,3 +69,4 @@ class GameBoard:
                 return self.player1
             else:
                 return self.player2
+        return None
