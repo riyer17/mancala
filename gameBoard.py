@@ -35,9 +35,10 @@ class GameBoard:
         numOfSeeds = self.board[pickUpHouse]
         self.board[pickUpHouse] = 0
         for i in range(numOfSeeds, 0, -1):
-            self.board[pickUpHouse-i] += 1
+            self.board[pickUpHouse - i] += 1
         counter = 0
-        while (self.board[pickUpHouse - numOfSeeds + counter] == 2) or (self.board[pickUpHouse - numOfSeeds - counter] == 3):
+        while (self.board[pickUpHouse - numOfSeeds + counter] == 2) or (
+                self.board[pickUpHouse - numOfSeeds - counter] == 3):
             if player == self.player1:
                 self.score1 += self.board[pickUpHouse - numOfSeeds + counter]
             else:
@@ -50,7 +51,21 @@ class GameBoard:
         self.print_board()
 
     def get_score(self, player):
-        if player == self.player1 :
+        if player == self.player1:
             return self.score1
         else:
             return self.score2
+
+    def determine_if_win(self):
+        if self.score1 >= 25:
+            return self.player1
+        elif self.score2 >= 25:
+            return self.player2
+        numSeedsInBoard = 0;
+        for x in range(0, 12):
+            numSeedsInBoard += self.board[x]
+        if numSeedsInBoard == 1:
+            if self.score1 > self.score2:
+                return self.player1
+            else:
+                return self.player2
