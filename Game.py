@@ -16,7 +16,10 @@ class Game:
     # parameter is whatever player is making a move
     def runMove(self, player):
         # Prompts player to move
-        playerInput = int(input("which house would you like to pick up seeds from?"))
+        if player == player1:
+            playerInput = int(input("\nPlayer 1, Which house would you like to pick up seeds from?"))
+        else:
+            playerInput = int(input("\nPlayer 2, Which house would you like to pick up seeds from?"))
         self.gameBoard.move(12-playerInput, player) # changes the index to match the direction of the GameBoard's list
         # Runs the move and the GameBoard makes changes
         # Print the gameboard at the end of each move
@@ -35,10 +38,11 @@ if "human" in player2Type.lower():
     # player2 = Computer();
 
 print("This is how the house numbering works: ")
-print("12  11  10  9   8   7\n1   2   3   4   5   6")
+print("p1: 12  11  10  9   8   7\np2: 1   2   3   4   5   6")
 counter = 0
 while counter < 100:
     if counter%2 == 0:
         game.runMove(player1)
     else:
         game.runMove(player2)
+    counter+=1;
