@@ -39,6 +39,17 @@ if "human" in player2Type.lower():
 
 print("This is how the house numbering works: ")
 print("p1: 12  11  10  9   8   7\np2: 1   2   3   4   5   6")
+print("There are 24 seeds and 6 houses in this game of Oware. Each player may only pick up seeds from houses on their "
+      "side. The first player who captures 24 seeds wins. "
+      "\nMoves: A player picks up all the seeds in a house on their side and sows them in the houses "
+      "counterclockwise, skipping the score houses and the house the seeds were picked from if there were more than "
+      "twelve. "
+      "\nCapturing: If the player lands in their opponent’s house and brings the count to 2 or 3, the player captures "
+      "the seeds in that house and adds them to their scorehouse. If the house previous to the one they landed in was "
+      "also brought to a count of 2 or 3, the player may capture those seeds as well; they can continue capturing, "
+      "going backwards, until they reach a house in which they did not bring the count to 2 or 3. "
+      "\nFeeding: If one player has no seeds left, the other player must make a move that will bring a seed to their "
+      "side. If no such move is possible, the player captures all seeds on their own side and ends the game.")
 counter = 0
 while counter < 100:
     if counter%2 == 0:

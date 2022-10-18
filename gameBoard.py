@@ -46,8 +46,12 @@ class GameBoard:
             self.board[pickUpHouse - numOfSeeds + counter] = 0
             counter += 1
 
-        # if (self.board[pickUpHouse-numOfSeeds] == 2) or (self.board[pickUpHouse-numOfSeeds] == 3):
-        # player.score += self.board[pickUpHouse-numOfSeeds]
+        if self.determine_if_win() is not None:
+            if self.determine_if_win() == self.player1:
+                print("Congratulations, Player 1, you have won!")
+            else:
+                print("Congratulations, Player 2, you have won!")
+            quit()
         self.print_board()
 
     def get_score(self, player):
