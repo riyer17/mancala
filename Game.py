@@ -13,7 +13,8 @@ class Game:
         self.player2 = Player("player2");
         self.gameBoard = GameBoard("player1", "player2");
 
-    # parameter is whatever player is making a move
+    # runs each move and deals with user input
+    # no actual calculation is happening in this function
     def runMove(self, player):
         # Prompts player to move
         if player == player1:
@@ -21,8 +22,7 @@ class Game:
         else:
             playerInput = int(input("\nPlayer 2, Which house would you like to pick up seeds from?"))
         self.gameBoard.move(12-playerInput, player) # changes the index to match the direction of the GameBoard's list
-        # Runs the move and the GameBoard makes changes
-        # Print the gameboard at the end of each move
+
 
 
 game = Game()
@@ -37,6 +37,7 @@ if "human" in player2Type.lower():
 # else:
     # player2 = Computer();
 
+# a bunch of printing: prints the rules and everything the player needs to know
 print("This is how the house numbering works: ")
 print("p1: 12  11  10  9   8   7\np2: 1   2   3   4   5   6")
 print("There are 24 seeds and 6 houses in this game of Oware. Each player may only pick up seeds from houses on their "
@@ -50,8 +51,12 @@ print("There are 24 seeds and 6 houses in this game of Oware. Each player may on
       "going backwards, until they reach a house in which they did not bring the count to 2 or 3. "
       "\nFeeding: If one player has no seeds left, the other player must make a move that will bring a seed to their "
       "side. If no such move is possible, the player captures all seeds on their own side and ends the game.")
+
 counter = 0
+# while loop for alternating between players, and if the game goes more than 100 moves (essentially an
+# infinite loop), the game ends
 while counter < 100:
+    # alternates between players
     if counter%2 == 0:
         game.runMove(player1)
     else:
