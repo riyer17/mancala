@@ -10,8 +10,8 @@ class GameBoard:
         self.player1 = Player(player1)
         self.player2 = Player(player2)
         self.board = [4] * 12
-        self.score1 = 0
-        self.score2 = 0
+        self.scoreHouse1 = 0
+        self.scoreHouse2 = 0
 
     # a method that prints the gameboard
     def print_board(self):
@@ -28,7 +28,7 @@ class GameBoard:
         for j in range(0, 6):
             tempPrint = tempPrint + str(12 - j) + "\t\t"
         print(tempPrint)
-        print("\n", tabs, "\t\t\tp1 score = ", self.score1, tabs, "p2 score = ", self.score2)
+        print("\n", tabs, "\t\t\tp1 score = ", self.scoreHouse1, tabs, "p2 score = ", self.scoreHouse2)
         tempPrint = "\nNumber of Seeds for p2: \t"
         # adds the number of seeds in each house for player 2 in a formatted way to a temp string to print out
         for i in reversed(range(-6, 0)):
@@ -50,9 +50,9 @@ class GameBoard:
         while (self.board[pickUpHouse - numOfSeeds + counter] == 2) or (
                 self.board[pickUpHouse - numOfSeeds - counter] == 3):
             if player == self.player1:
-                self.score1 += self.board[pickUpHouse - numOfSeeds + counter]
+                self.scoreHouse1 += self.board[pickUpHouse - numOfSeeds + counter]
             else:
-                self.score2 += self.board[pickUpHouse - numOfSeeds + counter]
+                self.scoreHouse2 += self.board[pickUpHouse - numOfSeeds + counter]
             self.board[pickUpHouse - numOfSeeds + counter] = 0
             counter += 1
 
@@ -64,22 +64,23 @@ class GameBoard:
             quit()
         self.print_board()
 
-    # method that gets the score of a player passed in as a parameter
+    # method that gets the number of seeds in a player's score house
+    #player passed in as a parameter
     def get_score(self, player):
-        # checks if the passed in player is player1, if so returns score1
+        # checks if the passed in player is player1, if so returns the number of seeds in scoreHouse1
         if player == self.player1:
-            return self.score1
-        # otherwise the passed in player is player2, so the method returns score 2
+            return self.scoreHouse1
+        # otherwise the passed in player is player2, so the method returns the number of seeds in scoreHouse2
         else:
-            return self.score2
+            return self.scoreHouse2
 
     # method that determines if someone has won the game
     def determine_if_win(self):
-        # if score1 is greater than or equal to 25 then player 1 wins
-        if self.score1 >= 25:
+        # if the seeds in scoreHouse1 is greater than or equal to 25 then player 1 wins
+        if self.scoreHouse1 >= 25:
             return self.player1
-        # if score2 is greater than or equal to 25 then player 2 wins
-        elif self.score2 >= 25:
+        # if the seeds in scoreHouse2 is greater than or equal to 25 then player 2 wins
+        elif self.scoreHouse2 >= 25:
             return self.player2
         numSeedsInBoard = 0;
         # counts the number of seeds in the entire board
@@ -87,10 +88,10 @@ class GameBoard:
             numSeedsInBoard += self.board[x]
         # checks if there is only a single seed in the entire board
         if numSeedsInBoard == 1:
-            # if there's only one seed in the board then if score1 is higher than score two then player 1 wins
-            if self.score1 > self.score2:
+            # if there's onr seed in the board then if scoreHouse1 has more seeds than scoreHouse2 then player 1 wins
+            if self.scoreHouse1 > self.scoreHouse2:
                 return self.player1
-            # else player 2 wins because their score is higher than player 1
+            # else player 2 wins because their scoreHouse has more seeds than player 1
             else:
                 return self.player2
         # if none of these cases are true then return none because the game should continue
