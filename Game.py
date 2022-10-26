@@ -21,13 +21,13 @@ class Game:
         if player == player1:
             playerInput = int(input("\nPlayer 1, Which house would you like to pick up seeds from?"))
             # keeps asking player1 to enter a valid number until they do
-            while not 1 <= playerInput <= 6:
+            while not 7 <= playerInput <= 12:
                 print("Please enter a house that is on your side of the board.")
                 playerInput = int(input("\nPlayer 1, Which house would you like to pick up seeds from?"))
         else:
             playerInput = int(input("\nPlayer 2, Which house would you like to pick up seeds from?"))
             # keeps asking player2 to enter a valid number until they do
-            while not 7 <= playerInput <= 12:
+            while not 1 <= playerInput <= 6:
                 print("Please enter a house that is on your side of the board.")
                 playerInput = int(input("\nPlayer 2, Which house would you like to pick up seeds from?"))
         self.gameBoard.move(12-playerInput, player) # changes the index to match the direction of the GameBoard's list
