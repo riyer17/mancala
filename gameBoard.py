@@ -44,18 +44,24 @@ class GameBoard:
         # this is function that changes the gameboard according to the player's move
         numOfSeeds = self.board[pickUpHouse]
         self.board[pickUpHouse] = 0
+        # adds a seed to every house that's counterclockwise from the pickUpHouse
         for i in range(numOfSeeds, 0, -1):
             self.board[pickUpHouse - i] += 1
         counter = 0
+        # keeps adding seeds to the player's scoreHouse until it reaches a house in which the player didn't bring the
+        # count to 2 or 3
+        # the counter variable keeps track of how far clockwise (aka backwards) we've gone
         while (self.board[pickUpHouse - numOfSeeds + counter] == 2) or (
                 self.board[pickUpHouse - numOfSeeds - counter] == 3):
+            # adds the seeds to the correct player's scoreHouse
             if player == self.player1:
                 self.scoreHouse1 += self.board[pickUpHouse - numOfSeeds + counter]
             else:
                 self.scoreHouse2 += self.board[pickUpHouse - numOfSeeds + counter]
             self.board[pickUpHouse - numOfSeeds + counter] = 0
             counter += 1
-
+        # if the determining winner method returns a player, it'll print a congratulatory message depending on who won
+        # and ends the game
         if self.determine_if_win() is not None:
             if self.determine_if_win() == self.player1:
                 print("Congratulations, Player 1, you have won!")
@@ -65,7 +71,7 @@ class GameBoard:
         self.print_board()
 
     # method that gets the number of seeds in a player's score house
-    #player passed in as a parameter
+    # player passed in as a parameter
     def get_score(self, player):
         # checks if the passed in player is player1, if so returns the number of seeds in scoreHouse1
         if player == self.player1:

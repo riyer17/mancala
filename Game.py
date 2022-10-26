@@ -35,6 +35,7 @@ class Game:
 
 game = Game()
 player1Type = input("Player 1: Human or computer?")
+# asking user if players are humans or computers, ignoring case
 if "human" in player1Type.lower():
     player1 = Human("player1")
 # else:
